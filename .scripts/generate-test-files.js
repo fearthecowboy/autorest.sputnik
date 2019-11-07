@@ -20,7 +20,9 @@ async function main() {
 
     if ([
       'azure-composite-swagger.json',
-      'body-formdata.json'
+      'body-formdata.json',
+      'composite-swagger.json',
+      'composite-swagger.quirks',
     ].indexOf(each) > -1) {
       continue;
     }

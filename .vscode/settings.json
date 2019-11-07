@@ -41,7 +41,7 @@
     "editor.tabSize": 4,
     "editor.detectIndentation": false
   },
-  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.tsdk": "sputnik\\node_modules\\typescript\\lib",
   "files.associations": {
     "rush.json": "jsonc",
     "command-line.json": "jsonc",

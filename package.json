@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node --max_old_space_size=4096 ./sputnik/dist/main",
     "debug": "node --max_old_space_size=4096 --inspect-brk ./sputnik/dist/main",
+    "test": "cd ./sputnik & npm test",
     "prepare": "node .scripts/verify-install",
     "generate-tests": "node .scripts/generate-test-files",
     "pack": "rush publish --publish --pack --include-all --tag preview",

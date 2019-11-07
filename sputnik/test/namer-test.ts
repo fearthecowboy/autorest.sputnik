@@ -8,6 +8,7 @@ import * as assert from 'assert';
 
 @suite class TestNamer {
   @test async 'test something'() {
+    assert.equal(1, 1, 'works for me kids!');
 
   }
 
