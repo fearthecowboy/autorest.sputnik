@@ -15,14 +15,19 @@ export async function generator(host: Host) {
     // get the code model from the core
     const session = await startSession<CodeModel>(host, codeModelSchema);
 
+    const c = await session.getValue(<any>null, null);
+
     // example: do something here.
     let text = "A source file\n";
+    text = text + await session.getValue("header-text", "NO HEADER TEXT?");
+
     for (const each of values(session.model.schemas.objects)) {
       text = text + `schema: ${each.language.sputnik?.name}\n`;
     }
 
     // example: output a generated text file
     host.WriteFile('sputnik-sample.txt', text, undefined, 'source-file-sputnik');
+
   } catch (E) {
     if (debug) {
       console.error(`${__filename} - FAILURE  ${JSON.stringify(E)} ${E.stack}`);

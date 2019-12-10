@@ -25,19 +25,9 @@ pipeline-model: v3
 # Pipeline Configuration
 ``` yaml
 pipeline:
-# --- extension remodeler ---
-
-  # "Shake the tree", and normalize the model
-  modelerfour:
-    input: openapi-document/multi-api/identity     # the plugin where we get inputs from
-  
-  # extensibility: allow developer to do transformations on the code model. 
-  modelerfour/new-transform: 
-    input: modelerfour 
-    
   # Choose names for everything 
   sputnik-namer:
-    input: modelerfour/new-transform
+    input: modelerfour/identity
 
   # extensibility: allow transforms after the naming
   sputnik-namer/new-transform: 
@@ -59,4 +49,10 @@ pipeline:
       
     is-object: false # tell it that we're not putting an object graph out
     output-artifact: source-file-sputnik # the file 'type' that we're outputting.
+
+  #sputnik/emitter/command:
+  #  input: emitter
+  #  run: 
+  #    - node -e "console.log('hi'); process.exit(1);"
+  #    - node -e "console.log('hi'); process.exit(0);"
 ```
