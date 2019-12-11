@@ -19,7 +19,10 @@ export async function generator(host: Host) {
 
     // example: do something here.
     let text = "A source file\n";
-    text = text + await session.getValue("header-text", "NO HEADER TEXT?");
+
+    const headerText = await session.getValue("header-text", "NO HEADER TEXT?");
+
+    text = text + headerText;
 
     for (const each of values(session.model.schemas.objects)) {
       text = text + `schema: ${each.language.sputnik?.name}\n`;
