@@ -24,6 +24,14 @@ pipeline-model: v3
 
 # Pipeline Configuration
 ``` yaml
+
+modelerfour:
+  flatten-models: true
+  flatten-payloads: true
+  prenamer: true
+  merge-response-headers: false
+  
+
 pipeline:
   # Choose names for everything 
   sputnik-namer:

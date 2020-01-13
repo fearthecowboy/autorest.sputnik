@@ -24,7 +24,8 @@ function cloneLanguageInfo(graph: any) {
 export async function process(session: Session<CodeModel>) {
   const model = session.model;
 
-  if (model.language.sputnik) {
+
+  if (model?.language.sputnik) {
     // this looks like it already has data for this model.
     // send back an error
     session.error('bad flavor', ['sputnik:1000', 'already-processed'], model.language.sputnik);
