@@ -9,14 +9,6 @@ AutoRest needs the below config to pick this up as a plug-in - see https://githu
 
 > if the modeler is loaded already, use that one, otherwise grab it.
 
-``` yaml !isLoaded('@autorest/remodeler') 
-use-extension:
-  "@autorest/modelerfour" : "~4.0.0" 
-
-# will use highest 4.0.x 
-```
-
-
 > Multi-Api Mode
 ``` yaml
 pipeline-model: v3
@@ -28,6 +20,7 @@ pipeline-model: v3
 modelerfour:
   flatten-models: true
   flatten-payloads: true
+  group-parameters: true
   prenamer: true
   merge-response-headers: false
   
