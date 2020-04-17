@@ -13,16 +13,25 @@ export async function generator(host: Host) {
 
   try {
     // get the code model from the core
-    const session = await startSession<CodeModel>(host, codeModelSchema);
+    const session = await startSession<CodeModel>(host, undefined, codeModelSchema, 'code-model-v4');
 
-    const c = await session.getValue(<any>null, null);
+    // if you need to use configuration values (ie, --foo)
+    const foo = await session.getValue('foo', null);
 
     // example: do something here.
-    let text = "A source file\n";
+    let text = 'A source file\n';
 
-    const headerText = await session.getValue("header-text", "NO HEADER TEXT?");
 
-    text = text + headerText;
+    for (const group of values(session.model.operationGroups)) {
+      for (const operation of values(group.operations)) {
+        for (const request of values(operation.requests)) {
+          if (request.protocol.http?.method === 'get') {
+            console.error(request.protocol.http);
+          }
+          console.error(request.protocol.http);
+        }
+      }
+    }
 
     for (const each of values(session.model.schemas.objects)) {
       text = text + `schema: ${each.language.sputnik?.name}\n`;

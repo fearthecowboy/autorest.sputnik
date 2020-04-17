@@ -18,25 +18,19 @@ pipeline-model: v3
 ``` yaml
 
 modelerfour:
-  flatten-models: true
-  flatten-payloads: true
-  group-parameters: true
-  prenamer: true
+  flatten-models: false
+  flatten-payloads: false
+  group-parameters: false
+  prenamer: false
   merge-response-headers: false
   
+use-extension: 
+  "@autorest/modelerfour": "4.13.312"
 
 pipeline:
-  # Choose names for everything 
-  sputnik-namer:
-    input: modelerfour/identity
-
-  # extensibility: allow transforms after the naming
-  sputnik-namer/new-transform: 
-    input: sputnik-namer 
-
   # generates code
   sputnik:
-    input: sputnik-namer/new-transform # and the generated c# files
+    input: modelerfour/identity # and the generated c# files
 
   # extensibility: allow text-transforms after the code gen
   sputnik/text-transform:
@@ -45,15 +39,9 @@ pipeline:
   # output the files to disk
   sputnik/emitter:
     input: 
-      - sputnik-namer/new-transform  # this allows us to dump out the code model after the namer (add --output-artifact:code-model-v4 on the command line)
       - sputnik/text-transform # this grabs the outputs after the last step.
       
     is-object: false # tell it that we're not putting an object graph out
     output-artifact: source-file-sputnik # the file 'type' that we're outputting.
 
-  #sputnik/emitter/command:
-  #  input: emitter
-  #  run: 
-  #    - node -e "console.log('hi'); process.exit(1);"
-  #    - node -e "console.log('hi'); process.exit(0);"
 ```

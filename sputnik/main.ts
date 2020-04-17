@@ -4,15 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { AutoRestExtension, } from '@azure-tools/autorest-extension-base';
-import { namer } from './namer/namer';
-import { generator } from './generator/generator';
+import { generator } from './generator';
 
 require('source-map-support').install();
 
 export async function main() {
   const pluginHost = new AutoRestExtension();
   pluginHost.Add('sputnik', generator);
-  pluginHost.Add('sputnik-namer', namer);
   await pluginHost.Run();
 }
 

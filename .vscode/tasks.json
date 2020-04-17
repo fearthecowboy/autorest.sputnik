@@ -5,17 +5,6 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "build",
-      "problemMatcher": [
-        "$tsc"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    },
-    {
-      "type": "npm",
       "script": "test",
       "group": {
         "kind": "test",
@@ -36,6 +25,17 @@
       "problemMatcher": [
         "$msCompile"
       ]
+    },
+    {
+      "type": "npm",
+      "script": "watch",
+      "path": "sputnik/",
+      "problemMatcher": [
+        "$msCompile"
+      ],
+      "group": "build",
+      "label": "npm: watch - sputnik",
+      "detail": "tsc -p . --watch"
     }
   ]
 }
