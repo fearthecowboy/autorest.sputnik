@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Host, startSession, Session } from '@azure-tools/autorest-extension-base';
-import { codeModelSchema, CodeModel, Language } from '@azure-tools/codemodel';
+import { codeModelSchema, CodeModel, Language, ObjectSchema } from '@azure-tools/codemodel';
 import { values } from '@azure-tools/linq';
 
 
@@ -25,10 +25,17 @@ export async function generator(host: Host) {
     for (const group of values(session.model.operationGroups)) {
       for (const operation of values(group.operations)) {
         for (const request of values(operation.requests)) {
-          if (request.protocol.http?.method === 'get') {
+          if (request.protocol.http?.method === 'put') {
+
             console.error(request.protocol.http);
+            const schema = <ObjectSchema>request?.parameters?.[0].schema;
+            for (const parent of values(schema.parents?.all)) {
+              // parent is one of the parent schemas
+              // parent.language.default.name
+            }
+            console.error(schema.properties);
           }
-          console.error(request.protocol.http);
+
         }
       }
     }
