@@ -13,3 +13,11 @@ autorest https://github.com/Azure/azure-rest-api-specs/tree/master/specification
 
 autorest https://github.com/Azure/azure-rest-api-specs/tree/master/specification/redis/resource-manager/readme.md --use:. --sputnik.debugger
 
+or for a single swagger file:
+
+autorest --input-file:foo.json --use:<path-to-the-dev-folder>  
+
+autorest --input-file:foo.json --use:c:/work/myExtension
+
+autorest --input-file:..  --use:@autorest/azure-functions-python 
+
