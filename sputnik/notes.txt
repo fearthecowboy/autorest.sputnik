@@ -2,7 +2,7 @@ Install:
 
 - nodeJS (min 10.x better: 12.x best: 13.x latest ) -- node 13 has a lot of good perf improvements
 - autorest `npm install -g autorest`
-- rushjs `npm install -g @microsoft/rush'
+- rushjs `npm install -g @microsoft/rush`
 
 git clone https://github.com/fearthecowboy/autorest.sputnik -b simple
 
